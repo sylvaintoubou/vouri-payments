@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import com.apps.devbee.login_pagevoorinc.loginTwoFragment.LoginFragment;
 import com.apps.devbee.login_pagevoorinc.loginTwoFragment.Sign_upFragment;
 
-public class LoginActivityTwo extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     ViewPager login_two_viewpager;
     TabLayout tabLayout;
     ImageView logo_vouriinc;
