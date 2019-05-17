@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Login_PageVoorinc</string>
+    <string name="explain_vourinc">send and receive money all over the world with vouriinc.</string>
+    <string name="login_text">login</string>
+    <string name="sing_up_text">sign up</string>
+    <string name="fogot_password_text">forgot password</string>
+
+    <string name="email">email</string>
+    <string name="password_text">password</string>
+    <string name="password_text_confirm_login_two">confirm your password</string>
+</resources>
