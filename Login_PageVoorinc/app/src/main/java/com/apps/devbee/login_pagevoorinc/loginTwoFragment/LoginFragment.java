@@ -1,6 +1,7 @@
 package com.apps.devbee.login_pagevoorinc.loginTwoFragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.apps.devbee.login_pagevoorinc.LoginActivity;
 import com.apps.devbee.login_pagevoorinc.R;
+import com.apps.devbee.login_pagevoorinc.VouriincActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,7 +42,7 @@ public class LoginFragment extends Fragment {
         login_button_two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((LoginActivity)getContext()).getLogo_vouriinc().setVisibility(View.INVISIBLE);
+                /*((LoginActivity)getContext()).getLogo_vouriinc().setVisibility(View.INVISIBLE);
                 ((LoginActivity)getContext()).getProgressBar().setVisibility(View.VISIBLE);
                 if (!email.isEmpty()&&!passwordsize.isEmpty()&&passwordsize.length()<6){
                     Toast.makeText(getActivity(),"erreur de  mots de passe : 6 caracteres minimun",Toast.LENGTH_LONG).show();
@@ -52,7 +54,16 @@ public class LoginFragment extends Fragment {
                     Toast.makeText(getActivity(),"remplir tous svp",Toast.LENGTH_LONG).show();
                     ((LoginActivity)getContext()).getLogo_vouriinc().setVisibility(View.VISIBLE);
                     ((LoginActivity)getContext()).getProgressBar().setVisibility(View.INVISIBLE);
-                }
+                }*/
+                passwordsize = login_editTextPassword.getText().toString();
+                email = loginEditTextEmail.getText().toString();
+
+                Intent homeIntent = new Intent(getActivity(), VouriincActivity.class);
+                homeIntent.putExtra("email",email);
+                homeIntent.putExtra("password",passwordsize);
+                getActivity().startActivity(homeIntent);
+                getActivity().finish();
+
             }
         });
         return v;

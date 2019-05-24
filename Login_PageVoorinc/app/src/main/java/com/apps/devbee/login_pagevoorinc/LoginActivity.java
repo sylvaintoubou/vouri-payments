@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -18,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ImageView logo_vouriinc;
     ProgressBar progressBar;
+    int a=1,b=3,sum=0;
 
 
 
@@ -38,7 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(4000);
         animationDrawable.start();
         logo_vouriinc.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade));
-
+        sum=a+b;
+        Log.d("wouri","OnCreate"+" sum is "+sum);
     }
 
     public void setupViewPager(ViewPager viewPager){
@@ -48,6 +51,42 @@ public class LoginActivity extends AppCompatActivity {
         tabsAdapter.addFragment(new Sign_upFragment(),"Sign up");
         viewPager.setAdapter(tabsAdapter);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("wouri","OnStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("wouri","OnResume"+" sum is "+sum++);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("wouri","OnPause");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("wouri","OnRestart");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt("key",sum);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        sum=savedInstanceState.getInt("key");
     }
 
     public ImageView getLogo_vouriinc() {
