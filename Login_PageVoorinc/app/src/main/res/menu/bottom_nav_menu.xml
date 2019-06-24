@@ -15,5 +15,10 @@
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_person_teal_500_24dp"
         android:title="@string/title_notifications" />
+    <item
+        android:id="@+id/trending_menu"
+        android:icon="@drawable/ic_trending"
+        android:title="Trending"
+        />
 
 </menu>

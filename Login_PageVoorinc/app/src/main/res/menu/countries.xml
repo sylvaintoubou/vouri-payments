@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/Cameroon"
+    android:title="Cameroon" />
+<item android:id="@+id/France"
+    android:title="France" />
+<item android:id="@+id/Gabon"
+    android:title="Gabon"/>
+</menu>

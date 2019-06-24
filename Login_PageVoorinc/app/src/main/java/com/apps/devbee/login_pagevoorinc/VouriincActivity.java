@@ -5,11 +5,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.apps.devbee.login_pagevoorinc.fragment_navigation.DashbordFragment;
+import com.apps.devbee.login_pagevoorinc.fragment_navigation.ProfileFragment;
+import com.apps.devbee.login_pagevoorinc.fragment_navigation.Send_ReceiveFragment;
 
 public class VouriincActivity extends AppCompatActivity {
     private TextView mTextMessage;
@@ -19,29 +24,40 @@ public class VouriincActivity extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment=null;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                    // mTextMessage.setText(R.string.title_home);
-                    Uri uri= Uri.parse("https://www.google.com");
+                   /* Uri uri= Uri.parse("https://www.google.com");
                     Intent it=new Intent(Intent.ACTION_VIEW,uri);
                     startActivity(it);
-                    return true;
+                    return true;*/
+                    selectedFragment=new DashbordFragment();
+                    break;
                 case R.id.navigation_dashboard:
                    // mTextMessage.setText(R.string.title_dashboard);
-                    Uri uri1=Uri.parse("tel:690034961");
+                    /*Uri uri1=Uri.parse("tel:690034961");
                     Intent it1=new Intent(Intent.ACTION_DIAL,uri1);
                     startActivity(it1);
-                    return true;
+                    return true;*/
+                    selectedFragment=new Send_ReceiveFragment();
+                    break;
                 case R.id.navigation_notifications:
                     //mTextMessage.setText(R.string.title_notifications);
-                    Intent i=new Intent(Intent.ACTION_GET_CONTENT);
+                   /* Intent i=new Intent(Intent.ACTION_GET_CONTENT);
                     i.setType("image/*");
                     startActivityForResult(i,TEXT_REQUEST);
-                    return true;
+
+                    return true;*/
+                   selectedFragment=new ProfileFragment();
+                   break;
+
             }
-            return false;
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,selectedFragment).commit();
+            return true;
         }
     };
 
@@ -55,6 +71,7 @@ public class VouriincActivity extends AppCompatActivity {
         String testlogin=getIntent().getStringExtra("email");
         String testpass=getIntent().getStringExtra("password");
         Toast.makeText(this,testlogin+' '+testpass,Toast.LENGTH_LONG).show();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new ProfileFragment()).commit();
     }
 
     @Override
